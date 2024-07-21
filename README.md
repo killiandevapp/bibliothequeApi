@@ -8,7 +8,12 @@
 
 ## Initialisation de la Base de Données
 
-Le fichier `config/database.js` initialise la base de données SQLite et crée les tables nécessaires.
+Le fichier `config/database.js` initialise la base de données SQLite, crée les tables nécessaires et insere les donnés initiales. 
+
+- Crée et connecte à la base de données `bibliotheque.db`.
+- Crée les tables : `auteurs`, `livres`, `emprunts`, `personnes`, `auteur_livre`, et `metadata`.
+- Vérifie si les données initiales ont déjà été insérées en consultant la table `metadata`.
+- Insère les données initiales si elles ne sont pas encore presentes.
 
 ## Sécurisation de l'API
 
@@ -121,7 +126,8 @@ Ces routes utilisent l'ETag pour éviter les modifications concurrentes.
 | GET     | /auteur        | Retourne la liste des auteurs |
 | GET     | /auteur/{id}   | Retourne la fiche de l’auteur portant l’ID indiquée |
 | POST    | /auteur        | Crée l’auteur selon les informations du corps de la requête |
-| PUT     | /auteur/{id}   | Modifie l’auteur selon les informations
+| PUT     | /auteur/{id}   | Modifie l’auteur selon les informations du corps de la requête |
+| DELETE  | /auteur/{id}   | Supprime l’auteur |
 
 ### Gestion des emprunts
 
@@ -135,3 +141,4 @@ Ces routes utilisent l'ETag pour éviter les modifications concurrentes.
 | Méthode | URL             | Description |
 |---------|-----------------|-------------|
 | GET     | /recherche/{mots} | Recherche des livres selon les mots fournis parmi le titre et le nom/prénom de l’auteur |
+
